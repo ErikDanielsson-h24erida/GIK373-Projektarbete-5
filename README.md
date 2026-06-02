@@ -1,1 +1,4 @@
-# Grupp_5
+# Grupp_5  
+Erik Danielsson
+Caroline Brändström
+Ghalya Yousef Shennar
