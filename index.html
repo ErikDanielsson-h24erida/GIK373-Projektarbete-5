@@ -24,7 +24,6 @@
         <nav class="desktop-menu">
           <a class="desktop-menu-link" href="#top">Hem</a>
           <a class="desktop-menu-link" href="#varför">Introduktion</a>
-          <a class="desktop-menu-link" href="#beräkning">Resiliensindex</a>
           <a class="desktop-menu-link" href="#karta">Karta</a>
           <a class="desktop-menu-link" href="#framåt">Vägen framåt</a>
         </nav>
@@ -38,7 +37,6 @@
       <nav class="mobile-menu" id="mobileMenu">
         <a class="mobile-menu-link" href="#top">Hem</a>
         <a class="mobile-menu-link" href="#varför">Introduktion</a>
-        <a class="mobile-menu-link" href="#beräkning">Resiliensindex</a>
         <a class="mobile-menu-link" href="#karta">Karta</a>
         <a class="mobile-menu-link" href="#framåt">Vägen framåt</a>
       </nav>
@@ -50,9 +48,9 @@
         <source src="hero-video.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay">
-        <h1 class="hero-title">Regional<br> matresiliens.</h1>
+        <h1 class="hero-title">Hur länge räcker maten där du bor?</h1>
         <p class="hero-text">
-        Hur väl klarar ditt län en kris?
+        Se ditt läns motståndskraft om krisen kommer.
         </p>
         <form class="hero-search" id="regionSearch">
           <input 
@@ -146,7 +144,7 @@
             Vad händer egentligen om gränserna stängs och transporterna stoppas?
           </p>
           <p>
-            Resiliens kartlägger hur mycket åkermark och lokal produktion som finns i varje län. 
+            Motståndskraft kartlägger hur mycket åkermark och lokal produktion som finns i varje län. 
             Vissa län har goda förutsättningar, medan andra är helt beroende av sina grannar för att överleva. 
           </p>
           <p>
@@ -163,128 +161,33 @@
 
     </section>
 
-<!--Calculations explanation-->
-    <section class="calculation-wrapper" id="beräkning">
-
-      <h1>Hur beräknas resilience index?
-        <div class="title-line"></div>
-      </h1>
-
-      <div class="cards-wrapper">
-            <!-- Card 1 -->
-        <article class="calculation-card">
-          <p class="label-calculations">STEG 1</p>
-
-          <div class="text">
-            <h3>Växtproduktion</h3>
-            <p>
-                Totala växtproduktion i länet divideras med befolkningen
-                för att få fram mängden växtproduktion per person.
-                Sedan divideras värdet med personens livsmedelsbehov
-                vilket är 500kg spannmål per person och år
-                (Einarsson & Naturskyddsföreningen, 2015).
-            </p>
-            <img class="ekvation_img-desktop" src="vaxtproduktion_berakning.png" alt="Beräkning växtproduktion">
-            <img class="ekvation_img" src="vaxtproduktion_berakning_mobilanpassat.png" alt="Beräkning växtproduktion">
-
-          </div>
-        </article>
-        <!-- Card 2 -->
-        <article class="calculation-card">
-            <p class="label-calculations">STEG 2</p>
-            <div class="text">
-              <h3>Åkermark</h3>
-              <p>
-                  Totala  
-                  åkermark i länet divideras med befolkningen för att få fram 
-                  mängden åkermark per person. Sedan divideras värdet med personens 
-                  livsmedelsbehov vilket är 0,41 hektar åkermark
-                  per person och år (Länsstyrelsen, 2016).
-              </p>
-              <img class="ekvation_img-desktop" src="akermark_berakning.png" alt="Beräkning växtproduktion">
-              <img class="ekvation_img" src="akermark_berakning_mobilanpassat.png" alt="Beräkning växtproduktion">
-
-          </div>
-        </article>
-        <!-- Card 3 -->
-        <article class="calculation-card">
-          <p class="label-calculations">STEG 3</p>
-          <div class="text">
-            <h3>Animalieproduktion</h3>
-            <p>
-                Totala animalieproduktionen i länet divideras med 
-                befolkningen för att få fram mängden animalieproduktion per person. 
-                Sedan divideras värdet med personens livsmedelsbehov vilket är 80kg slaktvikt per person
-                och år (Jordbruksverket, 2026).
-
-            </p>
-            <img class="ekvation_img-desktop" src="Animalieproduktion_berakning.png" alt="Beräkning växtproduktion">
-            <img class="ekvation_img" src="animalieproduktion_berakning_mobilanpassat.png" alt="Beräkning växtproduktion">
-          </div>
-        </article>
-      </div>
-      <article class="accordion-item formula-accordion">
-        <button class="accordion-button" type="button">
-          <span>Matematiska index formeln</span>
-          <img src="arrow-button.png" alt="" class="accordion-arrow">
-        </button>
-        
-        <div class="accordion-content">
-          <div class="formula-box">
-
-            <h3>Formel</h3>
-
-            <img src="formel.png" alt="Matematisk_formel">
-
-            <p>
-              <span class="steg3">Varför ,1? </span>Om ett län producerar 140 % av 
-              behovet blir värdet ändå 1 (100%).
-            </p>
-
-            <p>
-              <span class="steg3">Varför divideras med 3? </span>Resultaten från de tre indikatorerna läggs ihop och 
-              delas på 3 eftersom modellen består av tre kategorier.
-            </p>
-
-            <p>
-              <span class="steg3">Totalpoäng = R x 100: </span>
-              Till sist multipliceras resultatet med 100
-              för att få värdet i procent.
-            </p>
-
-          </div>
-        </div>
-      </article>
-    
-    </section>
-
     <!--Map-->
     <section class="map-section" id="karta">
       <div class="map-section-text">
-        <h1>Karta över resiliens
+        <h1>Karta över motståndskraft
           <div class="title-line"></div>
         </h1>
         <p>
-          Kartan visualiserar ett regionalt livsmedels resiliensindex i Sveriges län. 
-          Enligt Tendall et al. (2015) innebär livsmedelsresiliens att livsmedelssystemet 
+          Kartan visualiserar ett regionalt livsmedels motståndskraftindex i Sveriges län. 
+          Enligt Tendall et al. (2015) innebär livsmedelsmotståndskraft att livsmedelssystemet 
           och dess aktörer har förmågan att säkerställa en tillräcklig och stabil tillgång 
           till mat för hela befolkning, även vid förväntade eller oförutsedda kriser och störningar. 
-          Vårat resiliensindex bygger på tre indikatorer som är skörd, åkermark och djurproduktion. 
-          Genom dessa indikationer skapar vi ett livsmedelsresiliens i en tydlig 100 procentig skala. 
+          Vårat motståndskraftindex bygger på tre indikatorer som är skörd, åkermark och djurproduktion. 
+          Genom dessa indikationer skapar vi ett livsmedelsmotståndskraft i en tydlig 100 procentig skala. 
           Data som ligger till grund för indexet har hämtats från Statistikmyndigheten SCB:s 
           Statistikdatabas och Jordbruksverket (Statistikmyndigheten SCB, u.å.; Jordbruksverket, u.å.).
-          <br><br>På kartan representerar den orange färgskalan en låg grad av livsmedelsresiliens, 
-          medan den gröna färgskalan representerar en hög grad av livsmedelsresiliens. De ljusare 
-          nyanserna visar de lägsta respektive högsta nivåerna av resiliens.
+          <br><br>På kartan representerar den orange färgskalan en låg grad av livsmedelsmotståndskraft, 
+          medan den gröna färgskalan representerar en hög grad av livsmedelsmotståndskraft. De ljusare 
+          nyanserna visar de lägsta respektive högsta nivåerna av motståndskraft.
         </p>
       </div>
 
       <div class="map-visual-wrapper">
         <div class="map-section-map" id="resilienceMap"></div>
         <div class="map-custom-legend">
-          <span class="map-custom-legendlabel">Svag resiliens (0%)</span>
+          <span class="map-custom-legendlabel">Svag motståndskraft (0%)</span>
           <div class="map-custom-legendbar"></div>
-          <span class="map-custom-legend-label">Stark resiliens (100%)</span>
+          <span class="map-custom-legend-label">Stark motståndskraft (100%)</span>
         </div>
       </div>
     </section>
@@ -316,8 +219,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Skånes värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Skånes motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -361,7 +265,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -401,8 +305,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Blekinges värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Blekinge motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -446,7 +351,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -486,8 +391,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Kalmars värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Kalmars motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -531,7 +437,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -571,8 +477,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Västra Götalands värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Västra Götalands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -616,7 +523,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -656,8 +563,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Gotlands län värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Gotlands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -701,7 +609,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -743,8 +651,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Hallands värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Hallands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -788,7 +697,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -828,8 +737,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Kronobergs värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Kronobergs motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -873,7 +783,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -913,8 +823,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Jönköpings värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Jönköpings motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -958,7 +869,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -998,8 +909,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Östergötlands värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Östergötlands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1043,7 +955,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1086,8 +998,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Stockholms värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Stockholms motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1131,7 +1044,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1171,8 +1084,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Uppsalas värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Uppsalas motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1216,7 +1130,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1256,8 +1170,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Södermanlands värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Södermanlands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1301,7 +1216,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1341,8 +1256,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Värmlands värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Värmlands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1386,7 +1302,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1428,8 +1344,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Örebros värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Öreberos motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1473,7 +1390,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1513,8 +1430,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Västmanlands värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Västmanlands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1558,7 +1476,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1598,8 +1516,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Dalarnas värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Dalarnas motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1643,7 +1562,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1687,8 +1606,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Gävleborgs värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Gävleborgs motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1732,7 +1652,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1772,8 +1692,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Västernorrlands värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Västernorrlands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1817,7 +1738,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1857,8 +1778,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Jämtlands värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Jämtlands motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1902,7 +1824,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -1944,8 +1866,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Västerbottens värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Västerbottens motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -1989,7 +1912,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -2029,8 +1952,9 @@
 
                 <div class="accordion-description">
                   <p>
-                    Här visas Norrbottens värden för åkermark, skörd och slakt.
-                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                    Här visas Norrbottens motståndskraftvärden utifrån åkermark, skörd och köttproduktion. 
+                    Staplarna visar hur väl länets lokala produktion täcker behovet per person, 
+                    medan cirkeldiagrammet sammanfattar länets totala motståndskraftindex.
                   </p>
                 </div>
 
@@ -2074,7 +1998,7 @@
 
                   <div class="region-metric">
                     <div class="region-metric-top">
-                      <span>Självförsörjning: Slakt</span>
+                      <span>Självförsörjning: köttproduktion</span>
                       <span data-metric-value="animal">0%</span>
                     </div>
 
@@ -2107,7 +2031,7 @@
     </section>
 
     <!--Stats carousel-->
-    <section class="stats-carousel" aria-label="Statistik om regional matresiliens">
+    <section class="stats-carousel" aria-label="Statistik om regional matmotståndskraft">
       <div class="stats-carousel-track" id="statsCarouselTrack">
 
         <!-- Slide 1 -->
@@ -2118,7 +2042,7 @@
           </div>
           <h2>De tre starkaste länen</h2>
           <p class="stats-carousel-intro">
-            Dessa län har högst resiliensindex i modellen och visar starkast förmåga
+            Dessa län har högst motståndskraftindex i modellen och visar starkast förmåga
             att klara livsmedelsbehovet regionalt.
           </p>
 
@@ -2178,6 +2102,96 @@
         </button>
       </div>
     </section>
+<!--Calculations explanation-->
+    <section class="calculation-wrapper" id="beräkning">
+
+      <article class="accordion-item calculation-accordion">
+        <button class="accordion-button calculation-accordion-button" type="button">
+          <span>
+            Hur beräknas motståndskraftindex?
+            <span class="title-line"></span>
+          </span>
+
+          <img src="arrow-button.png" alt="" class="accordion-arrow">
+        </button>
+
+        <div class="accordion-content">
+          <div class="cards-wrapper">
+
+            <!-- Card 1 -->
+            <article class="calculation-card">
+              <p class="label-calculations">STEG 1</p>
+
+              <div class="text">
+                <h3>Skörd</h3>
+                <p>
+                  Totala skörden i länet divideras med befolkningen
+                  för att få fram mängden skörd per person.
+                  Sedan divideras värdet med personens livsmedelsbehov,
+                  vilket är 500 kg spannmål per person och år
+                  (Einarsson & Naturskyddsföreningen, 2015).
+                </p>
+
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="calculation-card">
+              <p class="label-calculations">STEG 2</p>
+
+              <div class="text">
+                <h3>Åkermark</h3>
+                <p>
+                  Total åkermark i länet divideras med befolkningen för att få fram 
+                  mängden åkermark per person. Sedan divideras värdet med personens 
+                  livsmedelsbehov, vilket är 0,41 hektar åkermark
+                  per person och år (Länsstyrelsen, 2016).
+                </p>
+
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="calculation-card">
+              <p class="label-calculations">STEG 3</p>
+
+              <div class="text">
+                <h3>Köttproduktion</h3>
+                <p>
+                  Totala köttproduktionen i länet divideras med 
+                  befolkningen för att få fram mängden köttproduktion per person. 
+                  Sedan divideras värdet med personens livsmedelsbehov,
+                  vilket är 80 kg köttproduktionvikt per person och år (Jordbruksverket, 2026).
+                </p>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="formula-box">
+            <h3>Formel</h3>
+
+            <img src="formel.png" alt="Matematisk formel">
+
+            <p>
+              <span class="steg3">Varför 1?</span>
+              Om ett län producerar 140 % av behovet blir värdet ändå 1, alltså 100 %.
+            </p>
+
+            <p>
+              <span class="steg3">Varför divideras med 3?</span>
+              Resultaten från de tre indikatorerna läggs ihop och delas på 3 eftersom modellen består av tre kategorier.
+            </p>
+
+            <p>
+              <span class="steg3">Totalpoäng = R x 100:</span>
+              Till sist multipliceras resultatet med 100 för att få värdet i procent.
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </section>
 
     <!--next-steps-->
     <section class="next-steps" id="framåt">
@@ -2212,7 +2226,7 @@
                 Det krävs en politisk förändring. Studier visar att om kommuner
                 slutar att enbart gå på lägsta pris och istället kräver
                 lokalproducerat vid offentliga upphandlingar, ger det våra
-                jordbruk en ekonomisk trygghet. Resiliens måste byggas lokalt
+                jordbruk en ekonomisk trygghet. Motståndskraft måste byggas lokalt
                 (Granvik et al. 2026). De lokala bönderna kan då finnas kvar och
                 fortsätta producera mat även i en kris.
               </p>
