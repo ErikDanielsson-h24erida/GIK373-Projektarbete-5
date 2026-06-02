@@ -1,0 +1,2321 @@
+<!doctype html>
+  <!--
+  Erik Danielsson
+  Caroline Brändström
+  Ghalya Yousef Shennar
+  -->
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-3.5.1.min.js" charset="utf-8"></script>
+    
+  </head>
+  <body>
+    <!--header-->
+    <div class="header-wrapper">  
+      <header class="header">
+        <div class="header-logo"><a href="#top"> Resilient
+          <span class="header-dot"></span></a>
+        </div>
+        <nav class="desktop-menu">
+          <a class="desktop-menu-link" href="#top">Hem</a>
+          <a class="desktop-menu-link" href="#varför">Introduktion</a>
+          <a class="desktop-menu-link" href="#beräkning">Resiliensindex</a>
+          <a class="desktop-menu-link" href="#karta">Karta</a>
+          <a class="desktop-menu-link" href="#framåt">Vägen framåt</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Öppna meny">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </header>
+ 
+      <nav class="mobile-menu" id="mobileMenu">
+        <a class="mobile-menu-link" href="#top">Hem</a>
+        <a class="mobile-menu-link" href="#varför">Introduktion</a>
+        <a class="mobile-menu-link" href="#beräkning">Resiliensindex</a>
+        <a class="mobile-menu-link" href="#karta">Karta</a>
+        <a class="mobile-menu-link" href="#framåt">Vägen framåt</a>
+      </nav>
+    </div>
+
+    <!--Hero--> 
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="hero-video.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay">
+        <h1 class="hero-title">Regional<br> matresiliens.</h1>
+        <p class="hero-text">
+        Hur väl klarar ditt län en kris?
+        </p>
+        <form class="hero-search" id="regionSearch">
+          <input 
+              class="hero-search-input" 
+              type="text" 
+              id="regionInput"
+              placeholder="Sök efter län, t.ex. Skåne">
+
+          <button class="hero-search-button" type="submit">
+              Sök
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!--Info accordion-->
+    <section class="info-accordion">
+      <article class="info-accordion-item">
+        <button class="info-accordion-button">
+          <img src="dotsimage.png" alt="" class="info-accordion-icon">
+
+          <div class="info-accordion-text">
+            <h3>Vi samlar splittrad data</h3>
+            <div class="info-accordion-content">
+              <p>Vi samlar statistik om skördar, åkermark och köttproduktion och kopplar ihop det med siffror på hur befolkningen ser ut. 
+                Genom att sammanställa hur mycket mat ett län faktiskt kan producera mot hur många som bor där kan vi skapa en tydlig bild 
+                av var sårbarheterna finns. 
+              </p>
+            </div>
+          </div>
+
+          <img src="arrow-button.png" alt="" class="info-accordion-arrow-img" >
+        </button >
+      </article>
+
+      <article class="info-accordion-item">
+        <button class="info-accordion-button">
+          <img src="mapimage.png" alt="" class="info-accordion-icon">
+
+          <div class="info-accordion-text">
+            <h3>Vi visualiserar sårbarheten</h3>
+            <div class="info-accordion-content">
+              <p>Livsmedelsberedskap kan vara krångligt och förtolkad. 
+                Därför förvandlar vi komplex data till ett smart och visuellt verktyg. 
+                Med vår interaktiva karta och enkla grafer kan du som medborgare på bara några sekunder 
+                se hur ditt län ligger till och var marginalerna är som minst om krisen kommer. 
+              </p>
+            </div>
+          </div>
+
+          <img src="arrow-button.png" alt="" class="info-accordion-arrow-img">
+        </button>
+      </article>
+
+      <article class="info-accordion-item">
+        <button class="info-accordion-button">
+          <img src="handimage.png" alt="" class="info-accordion-icon">
+
+          <div class="info-accordion-text">
+            <h3>Vi tänker på hållbarhet</h3>
+            <div class="info-accordion-content">
+              <p>Med fokus på FN:s globala mål 2 (Ingen hunger) och mål 11 (Hållbara städer och samhällen) 
+                kollar vi på Sveriges långsiktiga överlevnad. Vårt projekt visar svart på vitt att vi inte kan bygga trygga, 
+                framtidssäkra städer utan att samtidigt säkra en stark lokal matproduktion.
+              </p>
+            </div>
+          </div>
+
+          <img src="arrow-button.png" alt="" class="info-accordion-arrow-img">
+        </button>
+      </article>
+    </section >
+
+    <!--Intro-->
+    <section class="intro" id="varför">
+
+      <div>
+        <p class="label">VARFÖR DET HÄR ÄR VIKTIGT</p>
+        <div class="label-line"></div>
+        <h1>Hur förberett är ditt län på en livsmedelkris?
+        </h1>
+        <p>
+            Vi lever i en tid av växande global oro. 
+            Krig, energikriser och politiska osäkerheter gör att vi behöver vara förberedda på omfattande kriser. 
+            Svensk livsmedelsproduktion är väldigt avgörande i dessa situationer. 
+          </p>
+          <p>
+            Men sanningen är att vi importerar över hälften av all mat vi
+            konsumerar (Lantbrukarnas Riksförbund, 2025), vilket gör oss väldigt
+            sårbara.
+            Vad händer egentligen om gränserna stängs och transporterna stoppas?
+          </p>
+          <p>
+            Resiliens kartlägger hur mycket åkermark och lokal produktion som finns i varje län. 
+            Vissa län har goda förutsättningar, medan andra är helt beroende av sina grannar för att överleva. 
+          </p>
+          <p>
+            <span  class="bold-text"> Hur står det till där just du bor? </span>
+            Använd vår karta för att utforska ditt eget eller andra län. 
+            Se var maten faktiskt produceras, var bristerna är som störst och hur nära vi egentligen ligger krisgränsen.
+          </p>
+      </div>
+
+        <!--bild-->
+      <div class="photo">
+        <img src="intro_photo.jpg" allt="">
+      </div>
+
+    </section>
+
+<!--Calculations explanation-->
+    <section class="calculation-wrapper" id="beräkning">
+
+      <h1>Hur beräknas resilience index?
+        <div class="title-line"></div>
+      </h1>
+
+      <div class="cards-wrapper">
+            <!-- Card 1 -->
+        <article class="calculation-card">
+          <p class="label-calculations">STEG 1</p>
+
+          <div class="text">
+            <h3>Växtproduktion</h3>
+            <p>
+                Totala växtproduktion i länet divideras med befolkningen
+                för att få fram mängden växtproduktion per person.
+                Sedan divideras värdet med personens livsmedelsbehov
+                vilket är 500kg spannmål per person och år
+                (Einarsson & Naturskyddsföreningen, 2015).
+            </p>
+            <img class="ekvation_img-desktop" src="vaxtproduktion_berakning.png" alt="Beräkning växtproduktion">
+            <img class="ekvation_img" src="vaxtproduktion_berakning_mobilanpassat.png" alt="Beräkning växtproduktion">
+
+          </div>
+        </article>
+        <!-- Card 2 -->
+        <article class="calculation-card">
+            <p class="label-calculations">STEG 2</p>
+            <div class="text">
+              <h3>Åkermark</h3>
+              <p>
+                  Totala  
+                  åkermark i länet divideras med befolkningen för att få fram 
+                  mängden åkermark per person. Sedan divideras värdet med personens 
+                  livsmedelsbehov vilket är 0,41 hektar åkermark
+                  per person och år (Länsstyrelsen, 2016).
+              </p>
+              <img class="ekvation_img-desktop" src="akermark_berakning.png" alt="Beräkning växtproduktion">
+              <img class="ekvation_img" src="akermark_berakning_mobilanpassat.png" alt="Beräkning växtproduktion">
+
+          </div>
+        </article>
+        <!-- Card 3 -->
+        <article class="calculation-card">
+          <p class="label-calculations">STEG 3</p>
+          <div class="text">
+            <h3>Animalieproduktion</h3>
+            <p>
+                Totala animalieproduktionen i länet divideras med 
+                befolkningen för att få fram mängden animalieproduktion per person. 
+                Sedan divideras värdet med personens livsmedelsbehov vilket är 80kg slaktvikt per person
+                och år (Jordbruksverket, 2026).
+
+            </p>
+            <img class="ekvation_img-desktop" src="Animalieproduktion_berakning.png" alt="Beräkning växtproduktion">
+            <img class="ekvation_img" src="animalieproduktion_berakning_mobilanpassat.png" alt="Beräkning växtproduktion">
+          </div>
+        </article>
+      </div>
+      <article class="accordion-item formula-accordion">
+        <button class="accordion-button" type="button">
+          <span>Matematiska index formeln</span>
+          <img src="arrow-button.png" alt="" class="accordion-arrow">
+        </button>
+        
+        <div class="accordion-content">
+          <div class="formula-box">
+
+            <h3>Formel</h3>
+
+            <img src="formel.png" alt="Matematisk_formel">
+
+            <p>
+              <span class="steg3">Varför ,1? </span>Om ett län producerar 140 % av 
+              behovet blir värdet ändå 1 (100%).
+            </p>
+
+            <p>
+              <span class="steg3">Varför divideras med 3? </span>Resultaten från de tre indikatorerna läggs ihop och 
+              delas på 3 eftersom modellen består av tre kategorier.
+            </p>
+
+            <p>
+              <span class="steg3">Totalpoäng = R x 100: </span>
+              Till sist multipliceras resultatet med 100
+              för att få värdet i procent.
+            </p>
+
+          </div>
+        </div>
+      </article>
+    
+    </section>
+
+    <!--Map-->
+    <section class="map-section" id="karta">
+      <div class="map-section-text">
+        <h1>Karta över resiliens
+          <div class="title-line"></div>
+        </h1>
+        <p>
+          Kartan visualiserar ett regionalt livsmedels resiliensindex i Sveriges län. 
+          Enligt Tendall et al. (2015) innebär livsmedelsresiliens att livsmedelssystemet 
+          och dess aktörer har förmågan att säkerställa en tillräcklig och stabil tillgång 
+          till mat för hela befolkning, även vid förväntade eller oförutsedda kriser och störningar. 
+          Vårat resiliensindex bygger på tre indikatorer som är skörd, åkermark och djurproduktion. 
+          Genom dessa indikationer skapar vi ett livsmedelsresiliens i en tydlig 100 procentig skala. 
+          Data som ligger till grund för indexet har hämtats från Statistikmyndigheten SCB:s 
+          Statistikdatabas och Jordbruksverket (Statistikmyndigheten SCB, u.å.; Jordbruksverket, u.å.).
+          <br><br>På kartan representerar den orange färgskalan en låg grad av livsmedelsresiliens, 
+          medan den gröna färgskalan representerar en hög grad av livsmedelsresiliens. De ljusare 
+          nyanserna visar de lägsta respektive högsta nivåerna av resiliens.
+        </p>
+      </div>
+
+      <div class="map-visual-wrapper">
+        <div class="map-section-map" id="resilienceMap"></div>
+        <div class="map-custom-legend">
+          <span class="map-custom-legendlabel">Svag resiliens (0%)</span>
+          <div class="map-custom-legendbar"></div>
+          <span class="map-custom-legend-label">Stark resiliens (100%)</span>
+        </div>
+      </div>
+    </section>
+
+    <!--Region-broswer-->
+    <section class="region-browser">
+      <!--Region-browser tabs-->
+      <div class="region-browser-tabs">
+        <button class="region-browser-tab is-active" data-region="götaland">
+          Götaland
+        </button>
+        <button class="region-browser-tab" data-region="svealand">
+          Svealand
+        </button>
+        <button class="region-browser-tab" data-region="norrland">
+          Norrland
+        </button>
+      </div>
+      <div class="region-browser-panel is-active" id="götaland">
+        <div class="region-browser-column">
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Skånes län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Skånes värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Skåne län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Skåne län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Skåne län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Blekinges län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Blekinges värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Blekinge län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Blekinge län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Blekinge län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Kalmars län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Kalmars värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Kalmar län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Kalmar län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Kalmar län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Västra Götalands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Västra Götalands värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Västra Götalands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Västra Götalands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Västra Götalands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Gotlands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Gotlands län värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Gotlands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Gotlands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Gotlands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="region-browser-column">
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Hallands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Hallands värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Hallands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Hallands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Hallands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Kronobergs län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Kronobergs värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Kronobergs län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Kronobergs län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Kronobergs län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Jönköpings län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Jönköpings värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Jönköpings län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Jönköpings län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Jönköpings län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Östergötlands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Östergötlands värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Östergötlands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Östergötlands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Östergötlands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="region-browser-panel" id="svealand">
+        <div class="region-browser-column">
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Stockholms län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Stockholms värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Stockholms län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Stockholms län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Stockholms län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Uppsala län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Uppsalas värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Uppsala län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Uppsala län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Uppsala län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Södermanlands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Södermanlands värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Södermanlands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Södermanlands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Södermanlands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Värmlands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Värmlands värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Värmlands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Värmlands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Värmlands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="region-browser-column">
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Örebro län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Örebros värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Örebro län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Örebro län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Örebro län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Västmanlands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Västmanlands värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Västmanlands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Västmanlands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Västmanlands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Dalarnas län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Dalarnas värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Dalarnas län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Dalarnas län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Dalarnas län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="region-browser-panel" id="norrland">
+        <div class="region-browser-column">
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Gävleborgs län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Gävleborgs värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Gävleborgs län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Gävleborgs län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Gävleborgs län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Västernorrlands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Västernorrlands värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Västernorrlands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Västernorrlands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Västernorrlands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Jämtlands län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Jämtlands värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Jämtlands län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Jämtlands län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Jämtlands län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="region-browser-column">
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Västerbottens län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Västerbottens värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Västerbottens län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Västerbottens län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Västerbottens län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-button">
+              <span>Norrbottens län</span>
+              <img src="arrow-button.png" alt="" class="accordion-arrow">
+            </button>
+
+            <div class="accordion-content">
+              <div class="accordion-inner">
+
+                <div class="accordion-description">
+                  <p>
+                    Här visas Norrbottens värden för åkermark, skörd och slakt.
+                    Vi ser en hög Självförsörjning i skörd och ett stabilt resiliensindex på hela 87 procent.
+                  </p>
+                </div>
+
+                <div class="region-metrics" data-region-metrics="Norrbottens län">
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Åkermark per person</span>
+                      <span data-metric-value="area">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="area"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="area"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Skörd</span>
+                      <span data-metric-value="crop">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="crop"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="crop"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="region-metric">
+                    <div class="region-metric-top">
+                      <span>Självförsörjning: Slakt</span>
+                      <span data-metric-value="animal">0%</span>
+                    </div>
+
+                    <div class="region-metric-bar-wrap">
+                      <div class="region-metric-bar">
+                        <div class="region-metric-fill-base" data-metric-fill-base="animal"></div>
+                        <div class="region-metric-fill-overflow" data-metric-fill-overflow="animal"></div>
+                      </div>
+
+                      <div class="region-metric-scale">
+                        <span>Mål: 100 %</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-chart-wrap">
+                  <div class="accordion-chart">
+                    <canvas class="region-doughnut" data-region="Norrbottens län"></canvas>
+                  </div>
+
+                  <p class="accordion-score" data-score-region="Norrbottens län"></p>
+                </div>
+
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--Stats carousel-->
+    <section class="stats-carousel" aria-label="Statistik om regional matresiliens">
+      <div class="stats-carousel-track" id="statsCarouselTrack">
+
+        <!-- Slide 1 -->
+        <article class="stats-carousel-slide is-active">
+          <div class="stats-carousel-header">
+            <p class="label">STARKASTE LÄNEN</p>
+
+          </div>
+          <h2>De tre starkaste länen</h2>
+          <p class="stats-carousel-intro">
+            Dessa län har högst resiliensindex i modellen och visar starkast förmåga
+            att klara livsmedelsbehovet regionalt.
+          </p>
+
+          <div class="top-counties" id="topCountiesBars"></div>
+        </article>
+
+        <!-- Slide 2 -->
+        <article class="stats-carousel-slide">
+          <div class="stats-carousel-header">
+            <p class="label">STÖRST RISKZON</p>
+          </div>
+          <h2>Stockholm</h2>
+
+          <div class="risk-card" id="stockholmRiskCard">
+            <p>
+              Stockholm befinner sig i störst riskzon eftersom länet har svaga
+              siffror i relation till sin befolkning. Kombinationen av låg åkermark
+              per person, begränsad skörd och låg djurproduktion gör regionen
+              extra sårbar vid en livsmedelskris.<br><br>
+            </p>
+
+            <div class="risk-metrics" id="stockholmMetrics"></div>
+          </div>
+        </article>
+
+        <!-- SLIDE 3 -->
+        <article class="stats-carousel-slide stats-carousel-slide--goals">
+          <div class="stats-carousel-header">
+            <p class="label">MÅLUPPFYLLELSE</p>
+          </div>
+          <h2>Endast <span class="goal-stat-number goal-stat-number--inline">10%</span> klarar målen</h2>
+
+          <div class="goal-stat">
+            <p>
+              Endast ett fåtal av Sveriges län når upp till målen i modellen.
+              Det visar att de flesta län är beroende av andra regioner för att klara
+              sin långsiktiga livsmedelsförsörjning.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="stats-carousel-controls">
+        <button class="stats-carousel-button stats-carousel-button--prev" id="statsCarouselPrev" aria-label="Föregående slide">
+          <img src="arrow-button.png" alt="">
+        </button>
+
+        <div class="stats-carousel-dots" id="statsDots">
+          <button class="stats-carousel-dot is-active" type="button" data-slide="0" aria-label="Visa slide 1"></button>
+          <button class="stats-carousel-dot" type="button" data-slide="1" aria-label="Visa slide 2"></button>
+          <button class="stats-carousel-dot" type="button" data-slide="2" aria-label="Visa slide 3"></button>
+        </div>
+
+        <button class="stats-carousel-button stats-carousel-button--next" id="statsCarouselNext" aria-label="Nästa slide">
+          <img src="arrow-button.png" alt="">
+        </button>
+      </div>
+    </section>
+
+    <!--next-steps-->
+    <section class="next-steps" id="framåt">
+      <h1> Vägen framåt
+        <div class="title-line"></div>
+      </h1>
+      <div class="next-steps-list">
+        <article class="next-step-card">
+          <image src="local_farming_icon.png" allt="local_formig_icon"></image>
+          <div class="next-step-marker"></div>
+          <div class="next-step-text">
+            <h3>Minska importberoendet</h3>
+            <div class="next-step-content">
+              <p>
+                Vi måste minska vårt beroende av import. Att livsmedelssystemet är
+                logistikberoende gör oss sårbara vid störningar i transportkedjor
+                och kriser (FOI,2020). Genom att stötta det lokala jordbruket kan
+                vi öka den inhemska produktionen och säkerställa att vi har
+                tillgång till de resurser som behövs om gränserna stängs.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="next-step-card">
+          <image src="policy_icon.png" allt="Policy_icon"></image>
+          <div class="next-step-marker"></div>
+          <div class="next-step-text">
+            <h3>Politisk förändring</h3>
+            <div class="next-step-content">
+              <p>
+                Det krävs en politisk förändring. Studier visar att om kommuner
+                slutar att enbart gå på lägsta pris och istället kräver
+                lokalproducerat vid offentliga upphandlingar, ger det våra
+                jordbruk en ekonomisk trygghet. Resiliens måste byggas lokalt
+                (Granvik et al. 2026). De lokala bönderna kan då finnas kvar och
+                fortsätta producera mat även i en kris.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="next-step-card">
+          <image src="collaboration_icon.png" allt="collaboration_icon"></image>
+          <div class="next-step-marker"></div>
+          <div class="next-step-text">
+            <h3>Samarbete över gränserna</h3>
+            <div class="next-step-content">
+              <p>
+                Även om det finns resursbrister är det ofta samarbetet som
+                brister, vilket blir det största problemet. Matförsörjning och
+                krisberedskap hanteras oftast som isolerade frågor på olika
+                avdelningar, vilket gör samhället väldigt sårbart(Andersson et
+                al., 2026). Vårt projekt visar att vissa län är mycket mer utsatta
+                än andra, men med ett utvecklat samarbete kan vi lösa kriser
+                tillsammans.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!--footer-->
+    <footer class="footer">
+      <div class="footer-inner">
+
+        <div class="header-logo"><a href="#top"> Resilient
+          <span class="header-dot"></span></a>
+        </div>
+        <article class="accordion-item formula-accordion">
+          <button class="accordion-button" type="button">
+            <span>Källor</span>
+            <img src="arrow-button.png" alt="" class="accordion-arrow">
+          </button>
+
+          <div class="accordion-content">
+            <div>
+              <ul class="sources-list">
+                <li>
+                  Andersson, M., Granvik, M., & Milestad, R. (2026). Breaking
+                  out of the silos: Integrated approaches to food systems
+                  planning. Insights from Swedish municipalities. European
+                  Planning Studies, 34(3), 467–487.
+                  https://doi.org/10.1080/09654313.2025.2599867
+                </li>
+                <li>
+                  Einarsson, P., & Naturskyddsföreningen. (2015). Rent mjöl i påsen? Om spannmålsodling, miljöpåverkan och konsumtion [Faktaunderlag]. 
+                  Naturskyddsföreningen. 
+                  https://cdn.naturskyddsforeningen.se/uploads/2021/05/11102852/fakta_rent_mjol_2015_0.pdf
+                </li>
+                <li>
+                  FOI. (2020). Livsmedelsberedskap – vad menar vi?
+                  (FOI-R-4944-SE). Totalförsvarets forskningsinstitut.
+                </li>
+                <li>
+                  Granvik, M., Milestad, R., & Andersson, M. (2026). Placing
+                  resilient local food systems on the municipal agenda:
+                  Insights from Sweden. Food Security, 18, 423–441.
+                  https://doi.org/10.1007/s12571-025-01642-5
+                </li>
+                <li>
+                  Jordbruksverket. (2026). Statistikdatabas för jordbruk och
+                  livsmedel. https://statistik.jordbruksverket.se/
+                </li>
+                <li>
+                  Jordbruksverket. (2026, 9 april). Konsumtion av kött. 
+                  https://jordbruksverket.se/mat-och-drycker/hallbar-produktion-och-konsumtion-av-mat/konsumtion-av-kott
+                </li>
+                <li>
+                  Lantbrukarnas Riksförbund. (2025). Försörjningsgrad.
+                  https://www.lrf.se/politik-och-paverkan/forsorjningsgrad/
+                </li>
+                <li>
+                  Länsstyrelsen i Södermanlands län. (2016). Grön framtid: Möjligheter för livsmedelsproduktion i Södermanland. 
+                  https://www.lansstyrelsen.se/download/18.1b1d393819324610c3749db9/1732518546026/Gr%C3%B6n%20framtid.pdf
+                </li>
+                <li>
+                  Tendall, D. M., Joerin, J., Kopainsky, B., Edwards, P.,
+                  Shreck, A., Le, Q. B., Kruetli, P., Grant, M., & Six, J.
+                  (2015). Food system resilience: Defining the concept. Global
+                  Food Security, 6, 17–23.
+                  https://doi.org/10.1016/j.gfs.2015.08.001
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </footer>
+    
+    <!--pil upp-->
+    <a href="#top" class="back-to-top" aria-label="Till toppen">
+      <img src="arrow-upp.png" alt="">
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script> 
+    
+  </body>
+</html>
