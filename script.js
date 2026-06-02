@@ -618,7 +618,7 @@ function calculateResilience() {
 }
 
 
-//      Renderar staplar, diagram och karta
+//      Renderar staplar, cirkel och kartdiagram
 
 // Fyller stapeldiagrammen för varje län.
 function renderRegionBars() {
