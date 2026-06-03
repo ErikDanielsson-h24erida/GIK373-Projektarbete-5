@@ -889,38 +889,38 @@ function renderStatsCarousel() {
       .join("");
   }
 
-  const stockholm = regionArray.find((region) => {
-    return region.name === "Stockholms län";
-  });
+  const lowestCounties = [...regionArray]
+    .sort((a, b) => {
+      return a.totalScore - b.totalScore;
+    })
+    .slice(0, 3);
 
-  const stockholmMetrics = document.querySelector("#stockholmMetrics");
+  const lowestCountiesBars = document.querySelector("#lowestCountiesBars");
 
-  if (stockholm && stockholmMetrics) {
-    stockholmMetrics.innerHTML = `
-      ${createCarouselProgressBar(
-        "Åkermark per person",
-        stockholm.areaPercent,
-        "carousel-metric-fill--risk"
-      )}
-
-      ${createCarouselProgressBar(
-        "Självförsörjning: Skörd",
-        stockholm.cropPercent,
-        "carousel-metric-fill--risk"
-      )}
-
-      ${createCarouselProgressBar(
-        "Självförsörjning: Slakt",
-        stockholm.animalPercent,
-        "carousel-metric-fill--risk"
-      )}
-    `;
+  if (lowestCountiesBars) {
+    lowestCountiesBars.innerHTML = lowestCounties
+      .map((region) => {
+        return createCarouselProgressBar(
+          region.name,
+          region.totalScore,
+          "carousel-metric-fill--risk"
+        );
+      })
+      .join("");
   }
 
   const goalPercentElement = document.querySelector("#goalPercent");
 
   if (goalPercentElement) {
-    goalPercentElement.textContent = "24%";
+    const countiesThatReachGoal = regionArray.filter((region) => {
+      return region.totalScore === 100;
+    });
+
+    const goalPercent = Math.round(
+      (countiesThatReachGoal.length / regionArray.length) * 100
+    );
+
+    goalPercentElement.textContent = `${goalPercent}%`;
   }
 }
 

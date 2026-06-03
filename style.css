@@ -387,12 +387,11 @@ body {
 
   .photo {
     display: none;
-
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
+  }
+  .intro_photo_mobile{
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 16px;
   }
 }
 
@@ -860,7 +859,6 @@ body {
   margin-left: 24px;
   margin-right: 24px;
   margin-top: 24px;
-  margin-bottom: 60px;
   padding-left: 12px;
   padding-right: 12px;
   padding-top: 12px;
@@ -1159,6 +1157,8 @@ body {
 
       li {
         color: #cccccc;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
     }
   }
@@ -1328,6 +1328,9 @@ body {
         border-radius: 10px;
         
       }
+    }
+    .intro_photo_mobile{
+      display: none;
     }
   }
 
