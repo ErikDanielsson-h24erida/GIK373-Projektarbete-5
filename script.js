@@ -695,7 +695,7 @@ function renderRegionDoughnut() {
     );
 
     if (scoreElement) {
-      scoreElement.textContent = `Resiliensindex: ${score}%`;
+      scoreElement.textContent = `Motståndskraftindex: ${score}%`;
     }
 
     if (regionDoughnutInstances[region.name]) {
@@ -785,7 +785,7 @@ function calculateAndDrawMap(geojson) {
         },
         hoverinfo: "text",
         text: regionArray.map((region) => {
-          return `${region.name}<br>Resiliensindex: ${region.mapScore}%`;
+          return `${region.name}<br>Motståndskraftindex: ${region.mapScore}%`;
         })
       }
     ],
